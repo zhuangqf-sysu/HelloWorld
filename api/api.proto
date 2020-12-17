@@ -1,0 +1,14 @@
+syntax = "proto3";
+package com.zhuangqf.greet;
+
+message GreetReq {
+  string msg = 1;
+}
+
+message GreetResp {
+  string msg = 1;
+}
+
+service HelloWorld {
+  rpc Greet(GreetReq) returns (GreetResp);
+}
