@@ -2,7 +2,7 @@ package server
 
 import (
 	"context"
-	"fmt"
+	"log"
 
 	"HelloWorld/api"
 	"HelloWorld/internal/service"
@@ -19,7 +19,7 @@ func (g GrpcServerImpl) GetUser(ctx context.Context, req *api.IDReq) (*api.UserR
 	user, err := g.service.GetUser(ctx, req.Id)
 	if err != nil {
 		// log
-		fmt.Printf("GetUser(%v) err(%v)\n", req.Id, err)
+		log.Printf("GetUser(%v) err(%v)\n", req.Id, err)
 		return nil, err
 	}
 	return user.ToReply(), nil

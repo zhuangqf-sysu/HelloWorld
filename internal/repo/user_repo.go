@@ -12,6 +12,8 @@ type UserRepo interface {
 	DelUser(ctx context.Context, id int64) error
 	UpdateUser(ctx context.Context, user *model.User) error
 	BatchGetUser(ctx context.Context, ids []int64) ([]*model.User, error)
+
+	Close()
 }
 
 func NewUserRepo(dao *dao.Dao) (UserRepo, error) {
@@ -20,6 +22,9 @@ func NewUserRepo(dao *dao.Dao) (UserRepo, error) {
 
 type UserRepoImpl struct {
 	dao *dao.Dao
+}
+
+func (u UserRepoImpl) Close() {
 }
 
 func (u UserRepoImpl) GetUser(ctx context.Context, id int64) (*model.User, error) {
