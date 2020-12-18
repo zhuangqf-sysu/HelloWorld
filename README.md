@@ -25,4 +25,4 @@
 - service 业务处理（相对于biz,个人认为service更为贴切或者说熟悉）
 
 #### 依赖倒置
-[img](./pkg/img.png)
+![img](./pkg/img.png)
