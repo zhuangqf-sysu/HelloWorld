@@ -1,14 +1,37 @@
 syntax = "proto3";
-package com.zhuangqf.greet;
+package api;
 
-message GreetReq {
-  string msg = 1;
+message IDReq {
+  int64 id = 1;
 }
 
-message GreetResp {
-  string msg = 1;
+message UserReply {
+  int64 id = 1;
+  string name = 2;
+}
+
+message PageReq {
+  int32 pn = 1;
+  int32 ps = 2;
+}
+
+message PageReply {
+  int32 pn = 1;
+  int32 ps = 2;
+  int32 total = 3;
+}
+
+message UserQuery {
+  string name = 1;
+  PageReq page = 2;
+}
+
+message UsersReply {
+  repeated UserReply data = 1;
+
 }
 
 service HelloWorld {
-  rpc Greet(GreetReq) returns (GreetResp);
+  rpc GetUser(IDReq) returns (UserReply);
+  rpc ListUser(UserQuery) returns (UsersReply);
 }
